@@ -1,0 +1,18 @@
+<template name="layout">
+	<header>
+		<div class="container">
+			<h2>CHAT</h2>
+			{{> navigation}}
+		</div>
+	</header>
+
+	<div class="container">
+		<div class="content border">
+			{{> yield}}
+		</div><!-- end content -->
+	</div><!-- end container -->
+
+	<footer>
+		Copyright &copy; Kevin Phung 2015
+	</footer>
+</template>

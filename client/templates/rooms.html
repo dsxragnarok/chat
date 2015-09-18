@@ -1,0 +1,9 @@
+<template name="rooms">
+	<div class="rooms">
+		<ul>
+			{{#each room}}
+				<li><a href="{{pathFor route='chat'}}">{{name}}</a></li>
+			{{/each}}
+		</ul>
+	</div>
+</template>

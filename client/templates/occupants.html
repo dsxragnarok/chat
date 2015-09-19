@@ -1,5 +1,10 @@
 <template name="occupants">
 	<div class="occupants">
-		this lists room occupants
+		<h4>Occupants</h4>
+		<ul>
+			{{#each occupant}}
+			<li>{{name}}</li>
+			{{/each}}
+		</ul>
 	</div>
 </template>

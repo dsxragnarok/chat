@@ -81,3 +81,11 @@ html {
 input.textbox {
 	width: 100%;
 }
+
+.danger {
+	color: red;
+}
+
+input.danger {
+	background-color: pink;
+}

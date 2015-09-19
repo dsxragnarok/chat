@@ -39,6 +39,7 @@ Meteor.methods({
     /*
       oneroom : {
         _id : string,
+        date : new Date(),
         name : string,
         createdBy : userid,
         occupants : [],
@@ -53,7 +54,11 @@ Meteor.methods({
 
     var data = {
       createdBy : currentUser,
-      name : roomName
+      date : new Date(),
+      name : roomName,
+      private : false,
+      occupants : [currentUser], // the creator should also be an occupant
+      messages : []
     };
 
     return Rooms.insert(data);
@@ -77,8 +82,6 @@ Meteor.methods({
     if (message.trim().length === 0) {
       throw new Meteor.Error('empty-message');
     }
-
-    console.log(Meteor.user().username);
 
     var data = {
       speaker : currentUser,

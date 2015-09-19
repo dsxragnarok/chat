@@ -5,7 +5,7 @@ Template.logs.helpers({
 	'messages' : function () {
 		var room = this._id;
 		var oneRoom = Rooms.findOne(room);
-		console.log(oneRoom);
+		//console.log(oneRoom);
 		var messages = oneRoom.messages;
 		console.log(messages);
 		return messages;

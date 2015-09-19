@@ -27,7 +27,19 @@ Template.userInput.events({
 		var room = this._id,
 				message = $input.val();
 
-		Meteor.call('createNewMessage', room, message);
+		Meteor.call('createNewMessage', room, message, function (error, results) {
+			if (error) {
+				//console.log('ERROR from createNewMessage call: [' + error.reason + ']');
+				// NOTE: this is really ugly. I should really cache
+				// the logport element somewhere, and refer to it here.
+				// The new li element should also be created outside
+				jQuery('.logport').find('ul').append(
+					jQuery('<li/>').addClass('danger').html(error.reason)
+				);
+			} else {
+				console.log(results);
+			}
+		});
 
 		$input.val('');
 	}

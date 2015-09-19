@@ -1,7 +1,9 @@
 <template name="logs">
 	<div class="logport">
+		<ul>
 		{{#each messages}}
 			<li>{{speakerName}} : {{message}}</li>
 		{{/each}}
+		</ul>
 	</div>
 </template>

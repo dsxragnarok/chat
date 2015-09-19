@@ -1,9 +1,9 @@
 <template name="rooms">
 	<div class="rooms">
 		<h4>Rooms</h4>
-		<ul>
+		<ul class="roomList">
 			{{#each room}}
-				<li><a href="{{pathFor route='chat'}}">{{name}}</a></li>
+				<li>{{name}}</li>
 			{{/each}}
 		</ul>
 	</div>

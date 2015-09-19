@@ -51,17 +51,18 @@ Meteor.methods({
     if (!currentUser) {
       throw new Meteor.Error('not-authorized', 'You have no permission to create rooms.');
     }
-
-    // TODO: we need to create a user data to add to occupants
-    // since each user is unable to see results of Meteor.users collection
-    // other than themselves.
+    var userInfo = Meteor.users.findOne(currentUser);
 
     var data = {
       createdBy : currentUser,
       date : new Date(),
       name : roomName,
       private : false,
-      occupants : [currentUser], // the creator should also be an occupant
+      occupants : [{
+        id : currentUser,
+        name : userInfo.username,
+        email : userInfo.emails[0].address
+      }], // the creator should also be an occupant
       messages : []
     };
 

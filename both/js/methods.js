@@ -95,6 +95,21 @@ Meteor.methods({
     }
 
     return 'Success';
+  },
+  onUserLeaveRoom : function (userId,roomId) {
+    var userInfo = Meteor.users.findOne(userId);
+    var oneRoom = Rooms.findOne(roomId);
+
+    if (!userInfo) {
+      throw new Meteor.Error('invalid-user', 'Attempting to remove a non-existent user. [' + userId + ']');
+    }
+    if (!oneRoom) {
+      throw new Meteor.Error('invalid-room', 'Attempting to remove user from non-existent room. [' + roomId + ']');
+    }
+
+    Rooms.update({}, {
+      $pull : {occupants : {id : userId}}
+    });
   }
 });
 

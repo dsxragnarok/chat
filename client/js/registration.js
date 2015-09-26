@@ -54,8 +54,10 @@ Template.register.onRendered(function () {
 				password : $register.find('input[name=password]').val(),
 				/*confirmpassword : $register.find('input[name=confirmpassword]').val(),*/
 				email : $register.find('input[name=email]').val(),
-				/*firstname : $register.find('input[name=firstname]').val(),
-				lastname : $register.find('input[name=lastname]').val()*/
+				profile : {
+					firstname : $register.find('input[name=firstname]').val(),
+					lastname : $register.find('input[name=lastname]').val()
+				}
 			}
 
 			Accounts.createUser(userdata, function (error, results) {
